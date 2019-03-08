@@ -1,6 +1,7 @@
 import React from 'react'
-import {Header, Curate, Hamburger} from './style'
+import {Header, Curate, Hamburger, Auth} from './style'
 import {FaBars} from 'react-icons/fa'
+import Login from './login/login'
 
 const Toolbar = props => {
 
@@ -8,6 +9,9 @@ const Toolbar = props => {
       <Header>
         <Hamburger><FaBars /></Hamburger>
         <Curate>Curate</Curate>
+        <Auth>
+        <Login />
+        </Auth>
       </Header>
     )
 
