@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { LoginLinks, LinkContainer, Link } from './style'
-import classes from './login.css'
+import classes from './Login.css'
 
 const Login = props => (
   <LoginLinks>
