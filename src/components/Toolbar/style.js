@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Header = styled.header`
-  height: 12%;
+  height: 70px;
   width: 100%;
   position: fixed;
   top: 0;
@@ -10,18 +10,15 @@ export const Header = styled.header`
   display: flex;
   padding: 0 20px;
   box-sizing: border-box;
-  z-index: 90;
 `
 export const Hamburger = styled.div`
   color: #778899;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   display: flex;
   flex: 1;
   align-items: center
   justify-content: flex-start;
-
 `
-
 export const Curate = styled.h1`
   display: flex;
   flex: 1;

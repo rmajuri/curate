@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Input from '../../UI/Input/Input'
+import Input from '../UI/Input/Input'
 import {Loader, Button} from 'semantic-ui-react'
 import {Redirect} from 'react-router-dom'
 import * as actions from '../../store/actions/index'
@@ -13,6 +13,7 @@ class SignUpTab extends Component {
         elementConfig: {
           type: 'email',
           placeholder: 'Email...',
+          label: 'Email: '
         },
         value: '',
         validation: {
@@ -27,6 +28,7 @@ class SignUpTab extends Component {
         elementConfig: {
           type: 'password',
           placeholder: 'Password...',
+          label: 'Password: '
         },
         value: '',
         validation: {
@@ -39,11 +41,11 @@ class SignUpTab extends Component {
     },
   }
 
-  componentDidMount() {
-    if (!this.props.curating && this.props.authRedirectPath !== '/') {
-        this.props.onSetAuthRedirectPath()
-    }
-  }
+  // componentDidMount() {
+  //   if (!this.props.curating && this.props.authRedirectPath !== '/') {
+  //       this.props.onSetAuthRedirectPath()
+  //   }
+  // }
 
   checkValidity(value, rules) {
       let isValid = true
@@ -114,6 +116,7 @@ class SignUpTab extends Component {
         shouldValidate={formElement.config.validation}
         touched={formElement.config.touched}
         changed={event => this.inputChangedHanler(event, formElement.id)}
+        label={formElement.config.elementConfig.label}
       />
     ))
 
@@ -134,7 +137,7 @@ class SignUpTab extends Component {
         {errorMessage}
         <form onSubmit={this.submitHandler}>
           {form}
-          <Button color='green'>Submit</Button>
+          <Button color='green'>Sign Up</Button>
         </form>
       </div>
     )
@@ -146,7 +149,7 @@ const mapStateToProps = state => {
         loading: state.auth.loading,
         error: state.auth.error,
         isAuthenticated: state.auth.token !== null,
-        curating: state.curationBuilder.curating,
+        // curating: state.curationBuilder.curating,
         authRedirectPath: state.auth.authRedirectPath
     }
 }

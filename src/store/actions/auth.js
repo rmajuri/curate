@@ -4,7 +4,7 @@ import * as actionTypes from './actionTypes'
 
 export const authStart = () => {
   return {
-    type: actionTypes.authStart,
+    type: actionTypes.AUTH_START,
   }
 }
 

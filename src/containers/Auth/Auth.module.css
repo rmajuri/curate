@@ -1,0 +1,16 @@
+.contentMargin {
+  margin-top: 150px;
+  display: flex;
+  justify-content: center;
+
+}
+
+.tab {
+  background-color: #fffff0;
+  width: 50%;
+  box-shadow: 0 1px 1px  #b0c4de;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+

@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import Input from '../../UI/Input/Input'
+import Input from '../UI/Input/Input'
 import {Loader, Button} from 'semantic-ui-react'
 import {Redirect} from 'react-router-dom'
 import * as actions from '../../store/actions/index'
 import {connect} from 'react-redux'
+import styles from './LogInTab.module.css'
 
 class LogInTab extends Component {
   state = {
@@ -13,6 +14,7 @@ class LogInTab extends Component {
         elementConfig: {
           type: 'email',
           placeholder: 'Email...',
+          label: 'Email: '
         },
         value: '',
         validation: {
@@ -27,6 +29,7 @@ class LogInTab extends Component {
         elementConfig: {
           type: 'password',
           placeholder: 'Password...',
+          label: 'Password: '
         },
         value: '',
         validation: {
@@ -39,11 +42,11 @@ class LogInTab extends Component {
     },
   }
 
-  componentDidMount() {
-    if (!this.props.curating && this.props.authRedirectPath !== '/') {
-        this.props.onSetAuthRedirectPath()
-    }
-  }
+  // componentDidMount() {
+  //   if (!this.props.curating && this.props.authRedirectPath !== '/') {
+  //       this.props.onSetAuthRedirectPath()
+  //   }
+  // }
 
   checkValidity(value, rules) {
       let isValid = true
@@ -114,6 +117,7 @@ class LogInTab extends Component {
         shouldValidate={formElement.config.validation}
         touched={formElement.config.touched}
         changed={event => this.inputChangedHanler(event, formElement.id)}
+        label={formElement.config.elementConfig.label}
       />
     ))
 
@@ -132,9 +136,9 @@ class LogInTab extends Component {
       <div>
         {authRedirect}
         {errorMessage}
-        <form onSubmit={this.submitHandler}>
+        <form onSubmit={this.submitHandler} className={styles.form}>
           {form}
-          <Button color='green'>Submit</Button>
+          <Button>Log In</Button>
         </form>
       </div>
     )
@@ -146,7 +150,7 @@ const mapStateToProps = state => {
         loading: state.auth.loading,
         error: state.auth.error,
         isAuthenticated: state.auth.token !== null,
-        curating: state.curationBuilder.curating,
+        // curating: state.curationBuilder.curating,
         authRedirectPath: state.auth.authRedirectPath
     }
 }
