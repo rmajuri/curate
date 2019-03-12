@@ -5,7 +5,7 @@ import {Redirect} from 'react-router-dom'
 import * as actions from '../../store/actions/index'
 import {connect} from 'react-redux'
 
-class LogInTab extends Component {
+class SignUpTab extends Component {
   state = {
     controls: {
       email: {
@@ -91,7 +91,7 @@ class LogInTab extends Component {
 
   submitHandler = (event) => {
     event.preventDefault()
-    this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value, false)
+    this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value, true)
   }
 
   render() {
@@ -153,9 +153,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-      onAuth: (email, password) => dispatch(actions.auth(email, password, false)),
+      onAuth: (email, password) => dispatch(actions.auth(email, password, true)),
       onSetAuthRedirectPath: () => dispatch(actions.setAuthRedirectPath('/'))
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LogInTab)
+export default connect(mapStateToProps, mapDispatchToProps)(SignUpTab)
