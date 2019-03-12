@@ -136,9 +136,10 @@ class LogInTab extends Component {
       <div>
         {authRedirect}
         {errorMessage}
+        <h3 className={styles.heading}>Welcome back, friend.</h3>
         <form onSubmit={this.submitHandler} className={styles.form}>
           {form}
-          <Button>Log In</Button>
+          <Button className={styles.button} >Log In</Button>
         </form>
       </div>
     )

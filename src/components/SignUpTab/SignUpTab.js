@@ -4,6 +4,7 @@ import {Loader, Button} from 'semantic-ui-react'
 import {Redirect} from 'react-router-dom'
 import * as actions from '../../store/actions/index'
 import {connect} from 'react-redux'
+import styles from './SignUpTab.module.css'
 
 class SignUpTab extends Component {
   state = {
@@ -135,9 +136,10 @@ class SignUpTab extends Component {
       <div>
         {authRedirect}
         {errorMessage}
-        <form onSubmit={this.submitHandler}>
+        <h3 className={styles.heading}>Please join us.</h3>
+        <form onSubmit={this.submitHandler} className={styles.form}>
           {form}
-          <Button color='green'>Sign Up</Button>
+          <Button className={styles.button}>Sign Up</Button>
         </form>
       </div>
     )
