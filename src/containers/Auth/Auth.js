@@ -11,7 +11,7 @@ const Auth = props => {
       ]
   return (
     <div className={styles.contentMargin}>
-      <Tab panes={panes} className={styles.tab} />
+      <Tab panes={panes} className={styles.tab}/>
     </div>
   )
 }
