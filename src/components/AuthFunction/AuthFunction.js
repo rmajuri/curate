@@ -60,8 +60,8 @@ inputChangedHanler = (event, controlName) => {
 }
 
 submitHandler = (event) => {
-  event.preventDefault()
-  this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value, true)
+
+  this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value, this.props.function)
 }
 
 render() {
@@ -101,6 +101,7 @@ render() {
 
   const buttonText = this.props.function === 'signup' ? 'Sign Up' : 'Log In'
   const headingText = this.props.function === 'signup' ? 'Please join us.' : 'Welcome back, friend.' 
+  
 
   return (
     <div>
@@ -128,7 +129,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAuth: (email, password) => dispatch(actions.auth(email, password, true)),
+    onAuth: (email, password, authFunc) => dispatch(actions.auth(email, password, authFunc)),
     onSetAuthRedirectPath: () => dispatch(actions.setAuthRedirectPath('/'))
   }
 }

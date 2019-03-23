@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {fireAuth} from '../../firestore'
 
 import * as actionTypes from './actionTypes'
 
@@ -69,35 +70,64 @@ export const authCheckState = () => {
   }
 }
 
-export const auth = (email, password, isSignUp) => {
+// export const auth = (email, password, isSignUp) => {
+//   return dispatch => {
+//     dispatch(authStart())
+//     const authData = {
+//       email: email,
+//       password: password,
+//       returnSecureToken: true,
+//     }
+//     let url =
+//       'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyB5cHT6x62tTe-g27vBDIqWcwQWBSj3uiY'
+//     if (!isSignUp) {
+//       url =
+//         'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyB5cHT6x62tTe-g27vBDIqWcwQWBSj3uiY'
+//     }
+//     axios
+//       .post(url, authData)
+//       .then(response => {
+//         console.log(response)
+//         const expirationDate = new Date(
+//           new Date().getTime() + response.data.expiresIn * 1000
+//         )
+//         localStorage.setItem('token', response.data.idToken)
+//         localStorage.setItem('expirationDate', expirationDate)
+//         localStorage.setItem('userId', response.data.localId)
+//         dispatch(authSuccess(response.data.idToken, response.data.localId))
+//         dispatch(checkAuthTimeout(response.data.expiresIn))
+//       })
+//       .catch(err => {
+//         dispatch(authFail(err.response.data.error))
+//       })
+//   }
+// }
+export const auth = (email, password, authFunc) => {
   return dispatch => {
-    dispatch(authStart())
-    const authData = {
-      email: email,
-      password: password,
-      returnSecureToken: true,
-    }
-    let url =
-      'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyB5cHT6x62tTe-g27vBDIqWcwQWBSj3uiY'
-    if (!isSignUp) {
-      url =
-        'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyB5cHT6x62tTe-g27vBDIqWcwQWBSj3uiY'
-    }
-    axios
-      .post(url, authData)
-      .then(response => {
-        console.log(response)
-        const expirationDate = new Date(
-          new Date().getTime() + response.data.expiresIn * 1000
-        )
-        localStorage.setItem('token', response.data.idToken)
-        localStorage.setItem('expirationDate', expirationDate)
-        localStorage.setItem('userId', response.data.localId)
-        dispatch(authSuccess(response.data.idToken, response.data.localId))
-        dispatch(checkAuthTimeout(response.data.expiresIn))
-      })
-      .catch(err => {
-        dispatch(authFail(err.response.data.error))
-      })
+   dispatch(authStart())
+   if (authFunc === 'signup') {
+   fireAuth.createUserWithEmailAndPassWord(email, password)
+   .catch(function(error) {
+     dispatch(authFail(error))
+   })
+  } 
+
+   
+    // axios
+    //   .post(url, authData)
+    //   .then(response => {
+    //     console.log(response)
+    //     const expirationDate = new Date(
+    //       new Date().getTime() + response.data.expiresIn * 1000
+    //     )
+    //     localStorage.setItem('token', response.data.idToken)
+    //     localStorage.setItem('expirationDate', expirationDate)
+    //     localStorage.setItem('userId', response.data.localId)
+    //     dispatch(authSuccess(response.data.idToken, response.data.localId))
+    //     dispatch(checkAuthTimeout(response.data.expiresIn))
+    //   })
+    //   .catch(err => {
+    //     dispatch(authFail(err.response.data.error))
+    //   })
   }
 }
