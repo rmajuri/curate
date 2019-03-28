@@ -1,11 +1,14 @@
 import React from 'react'
 import { SignOutContainer, SignOutButton } from './style'
 import {fireAuth} from '../../../firestore'
+import {withRouter} from 'react-router-dom'
 
 const SignOut = props => {
 
   const signOut = () => {
     fireAuth.signOut().catch(e => console.log(e))
+    props.history.push('/')
+
   }
 
   return (
@@ -15,4 +18,4 @@ const SignOut = props => {
   )
 }
 
-export default SignOut
+export default withRouter(SignOut)

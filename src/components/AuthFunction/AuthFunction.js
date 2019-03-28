@@ -3,6 +3,7 @@ import Input from '../UI/Input/Input'
 import { Button } from 'semantic-ui-react'
 import styles from './AuthFunction.module.css'
 import * as firebase from 'firebase'
+import { withRouter } from 'react-router-dom'
 
 class AuthFunction extends Component {
   state = this.props.state
@@ -55,21 +56,22 @@ class AuthFunction extends Component {
   }
 
   submitHandler = event => {
-
     event.preventDefault()
-    
-    if (this.props.function === 'signup') {
 
-      const userInDB = firebase.firestore()
-      .collection('users')
-      .doc(`${this.state.controls.email.value}`)
+    if (this.props.function === 'signup') {
+      const userInDB = firebase
+        .firestore()
+        .collection('users')
+        .doc(`${this.state.controls.email.value}`)
 
       userInDB.get().then(user => {
         if (!user.exists) {
-          firebase.auth()
+          firebase
+            .auth()
             .setPersistence(firebase.auth.Auth.Persistence.LOCAL)
             .then(() =>
-              firebase.auth()
+              firebase
+                .auth()
                 .createUserWithEmailAndPassword(
                   this.state.controls.email.value,
                   this.state.controls.password.value
@@ -77,8 +79,9 @@ class AuthFunction extends Component {
                 .then(() => this.props.history.push('/'))
                 .catch(error => console.error(error))
             )
-  
-          firebase.firestore()
+
+          firebase
+            .firestore()
             .collection('users')
             .doc(`${this.state.controls.email.value}`)
             .set({
@@ -92,16 +95,15 @@ class AuthFunction extends Component {
               favoritedCurations: [],
               followedCurators: [],
               followedTopics: [],
-              photoURL: ''
+              photoURL: '',
             })
         } else {
-          this.setState({emailInUse: true})
+          this.setState({ emailInUse: true })
         }
       })
-
-
     } else {
-      firebase.auth()
+      firebase
+        .auth()
         .signInWithEmailAndPassword(
           this.state.controls.email.value,
           this.state.controls.password.value
@@ -147,14 +149,20 @@ class AuthFunction extends Component {
 
     return (
       <div className={styles.tabContentMargin}>
-        <h3 className={this.props.styles.heading}>{this.state.error.message ? this.state.error.message : headingText}</h3>
-        <form onSubmit={this.submitHandler} className={this.props.form}>
-          {form}
-          <Button className={this.props.styles.button}>{buttonText}</Button>
-        </form>
+        {this.state.error.message ? (
+          this.state.error.message
+        ) : (
+          <div>
+            <h3 className={this.props.styles.heading}>{headingText}</h3>
+            <form onSubmit={this.submitHandler} className={this.props.form}>
+              {form}
+              <Button className={this.props.styles.button}>{buttonText}</Button>
+            </form>
+          </div>
+        )}
       </div>
     )
   }
 }
 
-export default AuthFunction
+export default withRouter(AuthFunction)

@@ -7,7 +7,9 @@ export const LoginLinks = styled.ul`
   display: flex;
   flex-flow: row;
   align-items: center;
+  width: 35%;
   height: 100%;
+  justify-content: space-between;
 `
 export const LinkContainer = styled.li`
   margin: 10px 0;
@@ -21,6 +23,7 @@ export const LinkStyle = styled.p`
   width: 100%;
   box-sizing: border-box;
   display: inline-block;
+  letter-spacing: 0.1rem;
   :hover {
     color: #b0c4de;
   }

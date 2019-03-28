@@ -10,6 +10,7 @@ export const Header = styled.header`
   display: flex;
   padding: 0 20px;
   box-sizing: border-box;
+  margin: 0;
 `
 export const Hamburger = styled.div`
   color: #778899;
