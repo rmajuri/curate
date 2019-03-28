@@ -1,17 +1,16 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
-import { LoginLinks, LinkContainer, Link } from './style'
-import classes from './Login.css'
+import { Link } from 'react-router-dom'
+import { LoginLinks, LinkContainer, LinkStyle } from './style'
+import SignOut from '../SignOut/SignOut'
 
 const Login = props => (
   <LoginLinks>
     <LinkContainer>
-      <Link style={{paddingRight: '5px'}}>Log In</Link>
+      <Link to={`/auth`} style={{ paddingRight: '5px' }}>
+        <LinkStyle> Log In</LinkStyle>
+      </Link>
     </LinkContainer>
-    |
-    <LinkContainer>
-      <Link style={{paddingLeft: '5px'}}>Sign Up</Link>
-    </LinkContainer>
+    <SignOut />
   </LoginLinks>
 )
 

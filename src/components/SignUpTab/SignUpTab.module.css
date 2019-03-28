@@ -9,8 +9,23 @@
 
 .heading {
   text-align: center;
-  margin: 40px 0 0 0;
+  margin: 15px 0;
   padding: 10px 5px 5px 5px;
   color: #b0c4de;
   letter-spacing: 0.2rem;
+}
+
+.button {
+  padding: 10px;
+  margin: 10px;
+  background-color: ghostwhite;
+  color: #b0c4de;
+  letter-spacing: 0.2rem;
+  font-family: 'Times New Roman', Times, serif;
+  box-shadow: 0 0px 1px  #b0c4de;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: aliceblue;
 }

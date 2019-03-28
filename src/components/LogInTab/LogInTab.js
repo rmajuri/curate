@@ -1,16 +1,16 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styles from './LogInTab.module.css'
 import AuthFunction from '../AuthFunction/AuthFunction'
 
-const LogInTab = props => {
-  const state = {
+class LogInTab extends Component {
+  state = {
     controls: {
       email: {
         elementType: 'input',
         elementConfig: {
           type: 'email',
           placeholder: 'Email...',
-          label: 'Email: '
+          label: 'Email: ',
         },
         value: '',
         validation: {
@@ -25,7 +25,7 @@ const LogInTab = props => {
         elementConfig: {
           type: 'password',
           placeholder: 'Password...',
-          label: 'Password: '
+          label: 'Password: ',
         },
         value: '',
         validation: {
@@ -36,12 +36,11 @@ const LogInTab = props => {
         touched: false,
       },
     },
+    error: {}
   }
+  render() {
+    return <AuthFunction styles={styles} state={this.state} function="login" />
+  }
+}
 
-  return (
-    <AuthFunction styles={styles} state={state} function='login' />
-   )
- 
- }
- 
- export default LogInTab
+export default LogInTab

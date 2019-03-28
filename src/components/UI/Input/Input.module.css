@@ -5,9 +5,10 @@
 }
 
 .label {
-  font-weight: bold;
   display: block;
   margin-bottom: 8px;
+  color: #b0c4de;
+  letter-spacing: 0.2rem;
 }
 
 .inputElement {
@@ -15,15 +16,18 @@
   border: 1px solid #ccc;
   background-color: white;
   font: inherit;
-  padding: 6px 10px;
+  padding: 6px 5px;
   display: block;
   width: 100%;
   box-sizing: border-box;
+  color: #191970;
+  font-size: .75rem;
+  letter-spacing: 0.1rem;
 }
 
 .inputElement:focus {
   outline: none;
-  background-color: #ccc;
+  background-color: aliceblue;
 }
 
 .invalid {

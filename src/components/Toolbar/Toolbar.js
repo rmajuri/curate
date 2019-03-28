@@ -12,6 +12,7 @@ const Toolbar = props => {
         <Auth>
         <Login />
         </Auth>
+        
       </Header>
     )
 

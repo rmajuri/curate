@@ -1,21 +1,12 @@
 import styled from 'styled-components'
 
-export const LoginLinks = styled.ul`
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-flow: row;
-  align-items: center;
-  height: 100%;
-`
-export const LinkContainer = styled.li`
+export const SignOutContainer = styled.div`
   margin: 10px 0;
   box-sizing: border-box;
   display: block;
 `
 
-export const LinkStyle = styled.p`
+export const SignOutButton = styled.p`
   color: #778899;
   text-decoration: none;
   width: 100%;
@@ -28,6 +19,3 @@ export const LinkStyle = styled.p`
     color: #b0c4de;
   }
 `
-
-
-

@@ -1,16 +1,16 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styles from './SignUpTab.module.css'
 import AuthFunction from '../AuthFunction/AuthFunction'
 
-const SignUpTab = props => {
-  const state = {
+class SignUpTab extends Component {
+  state = {
     controls: {
       email: {
         elementType: 'input',
         elementConfig: {
           type: 'email',
           placeholder: 'Email...',
-          label: 'Email: '
+          label: 'Email: ',
         },
         value: '',
         validation: {
@@ -25,7 +25,7 @@ const SignUpTab = props => {
         elementConfig: {
           type: 'password',
           placeholder: 'Password...',
-          label: 'Password: '
+          label: 'Password: ',
         },
         value: '',
         validation: {
@@ -36,12 +36,12 @@ const SignUpTab = props => {
         touched: false,
       },
     },
+    error: {},
+    emailInUse: false
   }
-
-  return(
-   <AuthFunction styles={styles} state={state} function='signup' />
-  )
-
+  render() {
+    return <AuthFunction styles={styles} state={this.state} function="signup" />
+  }
 }
 
 export default SignUpTab
