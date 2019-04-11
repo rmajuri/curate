@@ -13,6 +13,7 @@ export const SignOutButton = styled.p`
   box-sizing: border-box;
   display: inline-block;
   letter-spacing: 0.1rem;
+  cursor: default;
   :hover {
     color: #b0c4de;
   }

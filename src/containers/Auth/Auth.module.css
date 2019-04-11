@@ -30,12 +30,12 @@
   color: #b0c4de;
   letter-spacing: 0.2rem;
   display: inline-block;
-  cursor: pointer;
+  cursor: default;
 }
 
 .menuItemSelected {
   color: #191970;
   letter-spacing: 0.2rem;
   display: inline-block;
-  cursor: pointer;
+  cursor: default;
 }
