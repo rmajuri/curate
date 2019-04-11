@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Input from '../UI/Input/Input'
 import { Button } from 'semantic-ui-react'
-import styles from './AuthFunction.module.css'
 import * as firebase from 'firebase'
 import { withRouter } from 'react-router-dom'
 
@@ -148,7 +147,7 @@ class AuthFunction extends Component {
         : 'Welcome back, friend.'
 
     return (
-      <div className={styles.tabContentMargin}>
+      <div>
         {this.state.error.message ? (
           this.state.error.message
         ) : (

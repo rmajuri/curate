@@ -3,27 +3,13 @@ import LogInTab from '../../components/LogInTab/LogInTab'
 import SignUpTab from '../../components/SignUpTab/SignUpTab'
 import styles from './Auth.module.css'
 import { useState } from 'react'
-import {fireAuth} from '../../firestore'
 
 const Auth = props => {
   const [selectedTab, setSelectedTab] = useState('login')
-  const [hasUser, setHasUser] = useState(false)
 
   const handleActiveTab = tab => {
     setSelectedTab(tab)
   }
-
-  const watchForUser = () => {
-    fireAuth.onAuthStateChanged(user => {
-      if (user) {
-        
-      } else {
-
-      }
-    })
-  }
-
-
 
   return (
       <div className={styles.tab}>

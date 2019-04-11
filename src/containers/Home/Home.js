@@ -1,10 +1,14 @@
 import React from 'react'
 import Aux from '../../hoc/Aux/Aux'
+import {SearchBar, SearchButton, SearchContainer} from './style'
 
 const Home = props => {
   return (
       <Aux>
-        <h1>Welcome to Curate</h1>
+        <SearchContainer>
+        <SearchBar />
+        <SearchButton>Search</SearchButton>
+        </SearchContainer>
       </Aux>
   )
 }
